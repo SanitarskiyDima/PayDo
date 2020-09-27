@@ -5,7 +5,7 @@ pipeline {
             agent {
                 docker { 
                     image 'node:10'
-                    args '-u root:root'
+                    args '-u root:root --ipc=host'
                     }
             }
             steps {

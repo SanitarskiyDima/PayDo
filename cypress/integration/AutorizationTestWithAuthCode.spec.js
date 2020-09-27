@@ -11,8 +11,8 @@ describe('Authorization smoke', () => {
         loginPage.getButtonLogin().click();
         loginPage.getAuthCode().type(user.authCode);
 
-        homePage.getCheckUrl();
-        homePage.getMenuProjects();
+        // homePage.getCheckUrl();
+        // homePage.getMenuProjects();
 
     })
 })
