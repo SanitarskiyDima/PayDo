@@ -19,13 +19,3 @@ module.exports = (on, config) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
 }
-
-
-
-const sqlServer = require('cypress-sql-server');
-
-module.exports = (on, config) => {
-  tasks = sqlServer.loadDBPlugin(config.db);
-  on('task', tasks);
-
-}

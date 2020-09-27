@@ -1,9 +1,9 @@
 {
     "baseUrl": "https://app.stage.paydo.com/",
-    "waitForAnimations" : true,
-    "chromeWebSecurity" : false,
-    
- 
+    "waitForAnimations": true,
+    "chromeWebSecurity": false,
+    "viewportWidth": 1920,
+    "viewportHeight": 1080,
     "db": {
         "userName": "engine",
         "password": "ubAaMyk6q3ytK2Bb",
@@ -11,7 +11,7 @@
         "options": {
             "database": "engine_prod",
             "encrypt": true,
-            "rowCollectionOnRequestCompletion" : true
+            "rowCollectionOnRequestCompletion": true
         }
     }
 }
