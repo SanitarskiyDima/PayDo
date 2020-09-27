@@ -144,7 +144,7 @@ describe('Checkout suit UI', () => {
 
         // 4.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
         // основная валюта мерчанта не совпадает с валютой оплаты. Цена товара в CUP
-        it.only('Checkout, product currency is not USD, GBP, EUR, RUB, the main currency does not match the payment currency ', () => {
+        it('Checkout, product currency is not USD, GBP, EUR, RUB, the main currency does not match the payment currency ', () => {
 
             let payAmount = cy.getRandomArbitrary(500, 1500);
             //let payAmount = 419.94;
