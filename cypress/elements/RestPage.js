@@ -34,11 +34,13 @@ class RestPage{
     }
 
     getButtonGenerateConfig() {
-        return cy.get('.col-md-12 > .mat-focus-indicator > .mat-button-wrapper');
+        return cy.contains('span', 'Generate config ')
+        //return cy.get('.col-md-12 > .mat-focus-indicator > .mat-button-wrapper');
     }
 
     getButtonShowPaymentPage() {
-        return cy.get('.form-field > .mat-focus-indicator > .mat-button-wrapper');
+        return cy.contains('span', 'Show payment page ')
+        //return cy.get('.form-field > .mat-focus-indicator > .mat-button-wrapper');
     }
 }
 

@@ -1,9 +1,18 @@
+import merchant from "../fixtures/merchant";
 
 
 class HomePage{
 
     getCheckUrl() {
-        return  cy.url().should('include', 'en/profile/overview');
+        return  cy.url().should('include','/en/profile/overview');
+    }
+
+    getCheckUrlMan() {
+        return  cy.url().should('include', '/en/manager');
+    }
+
+    getCheckUrlFin() {
+        return  cy.url().should('include', '/en/financial');
     }
 
     getMenuVerification() {
@@ -21,15 +30,46 @@ class HomePage{
 
 
     getMenuProjects() {
-        return cy.contains('Projects').click();
+        return cy.contains('Projects');
     }
 
     getSubMenuRest() {
-        return cy.get(':nth-child(3) > .mid-menu > :nth-child(3) > .mid-menu__li-link > .mat-line').click();
+        return cy.contains ('p', 'REST');
     }
 
     getMenuPaymentHistory() {
         return cy.contains('Payments History');
+    }
+
+    getMenuTransactions() {
+        return cy.contains('Transactions');
+    }
+
+    getMenuTickets() {
+        return cy.contains ('Tickets')
+    }
+
+    getMenuCreateTransfer() {
+        return cy.contains ('Create Transfer');
+    }
+
+
+    setMainCurrency() {
+        cy.request({
+            method: 'POST',
+            url: "https://account.stage.paydo.com/v1/users/settings/change-currency",
+            headers: {
+                token: merchant.token,
+            },
+            body: {
+                "identifier": merchant.bussiness_account,
+                "currency": merchant.main_currency
+            }
+        }).then((response) => {
+            expect(response).property('status').to.equal(201);
+            expect(response.body.status).eq(1);
+
+        })
     }
 }
 

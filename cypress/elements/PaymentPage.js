@@ -1,4 +1,5 @@
-
+import merchant from "../fixtures/merchant"
+import checkout from "../fixtures/checkout"
 
 class PaymentPage{
 
@@ -14,7 +15,7 @@ class PaymentPage{
         return cy.get('#mat-input-18');
     }
 
-    getInputCatdholderName() {
+    getInputCartdholderName() {
         return cy.get('#mat-input-19');
     }
 
@@ -22,9 +23,9 @@ class PaymentPage{
         return cy.get('[class="mat-focus-indicator button-simple checkout-pay-button mat-raised-button mat-button-base"]');
     }
 
-    getSelectCurrency() {
-         cy.get('.mat-select-value-text > .ng-tns-c140-42').click()
-       return cy.get ('#mat-option-335 > .mat-option-text').click()
+    SelectPayCurrency() {
+         cy.contains('span', merchant.main_currency).click();
+       return cy.contains ('span', checkout.pay_currency).click();
     }
 }
 

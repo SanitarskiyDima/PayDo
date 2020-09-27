@@ -1,43 +1,16 @@
 import loginPage from "./LoginPage";
 import feen from "../fixtures/feen.json"
 import merchant from "../fixtures/merchant.json"
+import paymentMethod from "../fixtures/paymentMethod"
 
 class FeenPage {
-
-    // getInstallComStrategAll(fix, pers) {
-    //     cy.request({
-    //         method: 'POST',
-    //         url: `https://app.stage.paydo.com/v1/instrument-settings/commissions/custom`,
-    //         headers: {
-    //             token: feen.token,
-    //         },
-    //         body: {
-    //             "transactionType": 7,
-    //             "strategy": 1,
-    //             "source": 1,
-    //             "value": {
-    //                 "ALL": [
-    //                     fix,
-    //                     pers
-    //                 ]
-    //             },
-    //             "currency": "",
-    //             "paymentMethodIdentifier": 300,
-    //             "userIdentifier": merchant.bussiness_account
-    //
-    //         }
-    //     }).then((response) => {
-    //         expect(response).property('status').to.equal(201)
-    //     })
-    // }
 
     getLogin() {
         loginPage.visit('/');
         window.localStorage.setItem('user-session',
-            '{"id":"1604","email":"eugeniy.o+f2@payop.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MDQiLCJhY2Nlc3NUb2tlbiI6ImRlYzhhMDE5YjA1Y2M2ZjVkMzk3ZjdiOSIsInRva2VuSWQiOm51bGwsIndhbGxldElkIjoiMTU5OCIsInRpbWUiOjE1OTYzNTgyNzMsImV4cGlyZWRBdCI6bnVsbCwicm9sZXMiOlsiUk9MRV9GSU5BTkNJQUwiXSwidHdvRmFjdG9yIjp7InBhc3NlZCI6dHJ1ZX19.GGimEqCfcBU3fMMiO23Uc9_-nPidBcmNwpFvNuNi3SU","role":4,"moduleUrl":"financial","status":1,"type":2,"accountType":1,"availableAccounts":[],"stayLogin":true,"isLoggedIn":true}')
+            '{"id":"1604","email":"eugeniy.o+f2@payop.com","token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE2MDQiLCJhY2Nlc3NUb2tlbiI6ImRlYzhhMDE5YjA1Y2M2ZjVkMzk3ZjdiOSIsInRva2VuSWQiOm51bGwsIndhbGxldElkIjoiMTU5OCIsInRpbWUiOjE1OTYzNTgyNzMsImV4cGlyZWRBdCI6bnVsbCwicm9sZXMiOlsiUk9MRV9GSU5BTkNJQUwiXSwidHdvRmFjdG9yIjp7InBhc3NlZCI6dHJ1ZX19.GGimEqCfcBU3fMMiO23Uc9_-nPidBcmNwpFvNuNi3SU","role":4,"moduleUrl":"financial","status":1,"type":2,"accountType":1,"availableAccounts":[],"stayLogin":true,"isLoggedIn":true}');
         loginPage.getButtonToAdmibPanel().click();
     }
-
 
     setCommissionsAndStrategy() {
         cy.request({
@@ -66,40 +39,6 @@ class FeenPage {
         })
     }
 
-    getFixComm() {
-         cy.request({
-            method: 'GET',
-            url: `https://app.stage.paydo.com/v1/instrument-settings/commissions/custom/300/1782`,
-            headers: {
-                token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE3ODIiLCJhY2Nlc3NUb2tlbiI6IjU4ZjE4NzhiZWQwYmJiMzM5OTk1NzVkMiIsInRva2VuSWQiOiIyOCIsIndhbGxldElkIjoiMTc3NiIsInRpbWUiOjE1OTY5NjYyNzUsImV4cGlyZWRBdCI6MTYwOTM2NTYwMCwicm9sZXMiOltdLCJ0d29GYWN0b3IiOnsicGFzc2VkIjpmYWxzZX19.CKWO2ky4C0GytFG0_pK-aKsFCa5cITEE7hBVxedH-78',
-            }
-        }).then((response) => {
-            expect(response).property('status').to.equal(200)
-            expect(response.body).property('data').to.not.be.oneOf([null, ""]);
-           return response.body.data[7].value.GBP[0]
-
-    })
-
-}
-
-
-    getPersCom() {
-         cy.request({
-            method: 'GET',
-            url: `https://app.stage.paydo.com/v1/instrument-settings/commissions/custom/300/1782`,
-            headers: {
-                token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE3ODIiLCJhY2Nlc3NUb2tlbiI6IjU4ZjE4NzhiZWQwYmJiMzM5OTk1NzVkMiIsInRva2VuSWQiOiIyOCIsIndhbGxldElkIjoiMTc3NiIsInRpbWUiOjE1OTY5NjYyNzUsImV4cGlyZWRBdCI6MTYwOTM2NTYwMCwicm9sZXMiOltdLCJ0d29GYWN0b3IiOnsicGFzc2VkIjpmYWxzZX19.CKWO2ky4C0GytFG0_pK-aKsFCa5cITEE7hBVxedH-78',
-            }
-        }).then((response) => {
-            expect(response).property('status').to.equal(200)
-            expect(response.body).property('data').to.not.be.oneOf([null, ""])
-             return response.body.data[7].value.GBP[1];
-
-
-         })
-
-    }
-
     // Add Project to MID
     addProjectToMid() {
         cy.request({
@@ -122,9 +61,9 @@ class FeenPage {
                     ""
                 ]
         }).then((response) => {
-            expect(response).property('status').to.equal(201)
+            expect(response).property('status').to.equal(201);
             expect(response.body).property('data').to.not.be.oneOf([null, ""])
-             })
+             });
 
         cy.request({
             method: 'POST',
@@ -165,7 +104,7 @@ class FeenPage {
                     "updatedAt": 1597518380
                 }
         }).then((response) => {
-            expect(response).property('status').to.equal(201)
+            expect(response).property('status').to.equal(201);
             expect(response.body).property('data').to.not.be.oneOf([null, ""])
         })
     }
@@ -188,7 +127,7 @@ class FeenPage {
 
             }
         }).then((response) => {
-            expect(response).property('status').to.equal(201)
+            expect(response).property('status').to.equal(201);
             expect(response.body).property('status').to.not.be.oneOf([null, ""])
         })
     }
@@ -205,8 +144,103 @@ class FeenPage {
                 "primaryIdentifier": 300
             }
         }).then((response) => {
-            expect(response).property('status').to.equal(200)
+            expect(response).property('status').to.equal(200);
             expect(response.body).property('status').to.not.be.oneOf([null, ""])
+        })
+    }
+
+    setNewCommissionsAndStrategy() {
+        cy.request({
+            method: 'POST',
+            url: `https://app.stage.paydo.com/v1/instrument-settings/commissions/custom`,
+            headers: {
+                token: feen.token,
+            },
+            body: {
+                "transactionType": 7,
+                "strategy": 2,
+                "source": 1,
+                "value": {
+                    "ALL": [
+                        feen.fix_commission,
+                        feen.percent_commission
+                    ]
+                },
+                "currency": "",
+                "paymentMethodIdentifier": 300,
+                "userIdentifier": merchant.bussiness_account
+            }
+        }).then((response) => {
+            expect(response).property('status').to.equal(201)
+        })
+    }
+
+    changeComissionsAndStrategy() {
+        // Get a strategy for the moment
+        cy.request({
+            method: 'GET',
+            url: "https://app.stage.paydo.com/v1/instrument-settings/commissions/custom/" + paymentMethod.pm_id + "/" + merchant.bussiness_account,
+            headers: {
+                token: feen.token,
+            }
+        }).then((response) => {
+            expect(response).property('status').to.equal(200);
+            expect(response.body).property('data').to.not.be.oneOf([null, ""]);
+            let strateg = response.body.data[7].strategy;
+            cy.log(strateg);
+
+            if (strateg === 1) {
+                cy.request({
+                    method: 'POST',
+                    url: `https://app.stage.paydo.com/v1/instrument-settings/commissions/custom`,
+                    headers: {
+                        token: feen.token,
+                    },
+                    body: {
+                        "transactionType": 7,
+                        "strategy": 2,
+                        "source": 1,
+                        "value": {
+                            "ALL": [
+                                feen.fix_commission,
+                                feen.percent_commission
+                            ]
+                        },
+                        "currency": "",
+                        "paymentMethodIdentifier": paymentMethod.pm_id,
+                        "userIdentifier": merchant.bussiness_account
+
+                    }
+                }).then((response) => {
+                    expect(response).property('status').to.equal(201);
+                    expect((response.body).status).eq (1)
+                })
+
+            } else {
+                cy.request({
+                    method: 'POST',
+                    url: `https://app.stage.paydo.com/v1/instrument-settings/commissions/custom`,
+                    headers: {
+                        token: feen.token,
+                    },
+                    body: {
+                        "transactionType": 7,
+                        "strategy": 1,
+                        "source": 1,
+                        "value": {
+                            "ALL": [
+                                feen.fix_commission,
+                                feen.percent_commission
+                            ]
+                        },
+                        "currency": "",
+                        "paymentMethodIdentifier": paymentMethod.pm_id,
+                        "userIdentifier": merchant.bussiness_account
+                    }
+                }).then((response) => {
+                    expect(response).property('status').to.equal(201)
+                })
+            }
         })
     }
 }
