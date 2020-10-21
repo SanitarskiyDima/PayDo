@@ -1,0 +1,7 @@
+{
+  "payamount": 300,
+  "amount_1": 160,
+  "amount_2": 301,
+  "alert_1": "Refund amount is bigger than transaction amount",
+  "alert_2": "Not enough money on transaction to make refund"
+}

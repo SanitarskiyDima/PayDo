@@ -1,0 +1,8 @@
+{
+  "invoiceIdentifier": "invId",
+  "saveCard": null,
+  "pan": "card.card_number",
+  "expirationDate": "card.expiration_date",
+  "cvv": "card.CVC",
+  "holderName": "card.cardholder"
+}

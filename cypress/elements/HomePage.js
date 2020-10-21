@@ -71,6 +71,10 @@ class HomePage{
 
         })
     }
+
+    getMenuChargebacks() {
+        return cy.contains('Chargebacks');
+    }
 }
 
 export default new HomePage();

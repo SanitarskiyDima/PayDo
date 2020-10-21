@@ -5,9 +5,10 @@ class ManagerPage {
 
 
     acceptPersonalVerification() {
-        cy.request({            //получение идентификатора для персональной верификации
+        //получение идентификатора для персональной верификации
+        cy.request({
             method: 'GET',
-            url: "https://app.stage.paydo.com/v1/users/verification/all?query[userIdentifier]="+merchant.personal_account,
+            url: "https://app.stage.paydo.com/v1/users/verification/all?query[userIdentifier]=" + merchant.personal_account,
             params: {
                 "query[userIdentifier]": merchant.personal_account
             },
@@ -15,11 +16,12 @@ class ManagerPage {
                 token: manajer.token
             }
         }).then((response) => {
-            expect(response).property('status').to.equal(200)
+            expect(response).property('status').to.equal(200);
             expect(response.body).property('data').to.not.be.oneOf([null, ""]);
-            let persveriden = response.body.data[0].identifier
+            let persveriden = response.body.data[0].identifier;
 
-            cy.request({        //персональная верификация по идентификатору
+            //персональная верификация по идентификатору
+            cy.request({
                 method: 'POST',
                 url: `https://app.stage.paydo.com/v1/users/verification/verify`,
                 headers: {
@@ -35,10 +37,11 @@ class ManagerPage {
     }
 
 
-    acceptPersonalIban() {
-        cy.request({            //получение идентификатора для персонального IBAN
+    acceptPersonalIBAN() {
+        //получение идентификатора для персонального IBAN
+        cy.request({
             method: 'GET',
-            url: "https://app.stage.paydo.com/v1/ibans/requests/filter?query[userIdentifier]="+merchant.personal_account,
+            url: "https://app.stage.paydo.com/v1/ibans/requests/filter?query[userIdentifier]=" + merchant.personal_account,
             params: {
                 "query[userIdentifier]": merchant.personal_account
             },
@@ -46,13 +49,14 @@ class ManagerPage {
                 token: manajer.token
             }
         }).then((response) => {
-            expect(response).property('status').to.equal(200)
+            expect(response).property('status').to.equal(200);
             expect(response.body).property('data').to.not.be.oneOf([null, ""]);
-            let persiban = response.body.data[0].identifier
+            let persiban = response.body.data[0].identifier;
 
-            cy.request({        //верификация персонального IBAN по идентификатору
+            //верификация персонального IBAN по идентификатору
+            cy.request({
                 method: 'POST',
-                url: "https://app.stage.paydo.com/v1/ibans/requests/"+persiban+"/accept",   //'+idreq+' конкатенация и кавычки для передачи значения айди запроса
+                url: "https://app.stage.paydo.com/v1/ibans/requests/" + persiban + "/accept",
                 headers: {
                     token: manajer.token,
                 }
@@ -64,21 +68,23 @@ class ManagerPage {
 
 
     acceptBusinessVerification() {
-        cy.request({            //получение идентификатора для бизнес верификации
+        //получение идентификатора для бизнес верификации
+        cy.request({
             method: 'GET',
-            url: "https://app.stage.paydo.com/v1/users/verification/all?query[userIdentifier]="+merchant.bussiness_account,
+            url: "https://app.stage.paydo.com/v1/users/verification/all?query[userIdentifier]=" + merchant.bussiness_account,
             params: {
                 "query[userIdentifier]": merchant.bussiness_account
             },
             headers: {
-                token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTYiLCJhY2Nlc3NUb2tlbiI6ImE0YWViZTgyZDA3MmFjMzhhYTFjYWIyMiIsInRva2VuSWQiOm51bGwsIndhbGxldElkIjoiMTU5MCIsInRpbWUiOjE1OTYzNTczNjksImV4cGlyZWRBdCI6bnVsbCwicm9sZXMiOlsiUk9MRV9NQU5BR0VSIl0sInR3b0ZhY3RvciI6eyJwYXNzZWQiOnRydWV9fQ.vPDJQpWUYKvuZT7L_4_tFWMMIEiuGOvfIyKMNvrLZH4'
+                token: manajer.token
             }
         }).then((response) => {
-            expect(response).property('status').to.equal(200)
+            expect(response).property('status').to.equal(200);
             expect(response.body).property('data').to.not.be.oneOf([null, ""]);
-            let busveriden = response.body.data[0].identifier
+            let busveriden = response.body.data[0].identifier;
 
-            cy.request({            //бизнес верификация по идентификатору
+            //бизнес верификация по идентификатору
+            cy.request({
                 method: 'POST',
                 url: `https://app.stage.paydo.com/v1/users/verification/verify`,
                 headers: {
@@ -95,9 +101,10 @@ class ManagerPage {
 
 
     acceptBusinessIban() {
-        cy.request({            //получение идентификатора для бизнес IBAN
+        //получение идентификатора для бизнес IBAN
+        cy.request({
             method: 'GET',
-            url: "https://app.stage.paydo.com/v1/ibans/requests/filter?query[userIdentifier]="+merchant.bussiness_account,
+            url: "https://app.stage.paydo.com/v1/ibans/requests/filter?query[userIdentifier]=" + merchant.bussiness_account,
             params: {
                 "query[userIdentifier]": merchant.bussiness_account
             },
@@ -105,15 +112,16 @@ class ManagerPage {
                 token: manajer.token
             }
         }).then((response) => {
-            expect(response).property('status').to.equal(200)
+            expect(response).property('status').to.equal(200);
             expect(response.body).property('data').to.not.be.oneOf([null, ""]);
-            let busiban = response.body.data[0].identifier
+            let busiban = response.body.data[0].identifier;
 
-            cy.request({        //верификация бизнес IBAN по идентификатору
+            //верификация бизнес IBAN по идентификатору
+            cy.request({
                 method: 'POST',
-                url: "https://app.stage.paydo.com/v1/ibans/requests/"+busiban+"/accept",   //'+busiban+' конкатенация и кавычки для передачи значения айди запроса
+                url: "https://app.stage.paydo.com/v1/ibans/requests/" + busiban + "/accept",
                 headers: {
-                    token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1OTYiLCJhY2Nlc3NUb2tlbiI6ImE0YWViZTgyZDA3MmFjMzhhYTFjYWIyMiIsInRva2VuSWQiOm51bGwsIndhbGxldElkIjoiMTU5MCIsInRpbWUiOjE1OTYzNTczNjksImV4cGlyZWRBdCI6bnVsbCwicm9sZXMiOlsiUk9MRV9NQU5BR0VSIl0sInR3b0ZhY3RvciI6eyJwYXNzZWQiOnRydWV9fQ.vPDJQpWUYKvuZT7L_4_tFWMMIEiuGOvfIyKMNvrLZH4',
+                    token: manajer.token,
                 }
             }).then((response) => {
                 expect(response).property('status').to.equal(200)

@@ -327,7 +327,7 @@ class BusinessVerPage {
     }
 
 
-    sendRequestIban() {
+    sendRequestIBAN() {
         cy.request({
             method: 'POST',
             url: `https://app.stage.paydo.com/v1/ibans/requests/create`,

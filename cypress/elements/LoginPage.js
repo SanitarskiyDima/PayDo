@@ -26,7 +26,7 @@ class LoginPage {
     }
 
 
-    getButtonToAdmibPanel() {
+    getButtonToAdminPanel() {
         return cy.contains('To Admin Panel');
     }
 

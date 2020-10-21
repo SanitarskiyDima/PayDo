@@ -1,0 +1,26 @@
+{
+  "description": "My Business",
+  "monthlyTurnover": {
+    "amount": "10000",
+    "currency": "EUR"
+  },
+  "transferMoney": {
+    "amount": "1000",
+    "currency": "EUR"
+  },
+  "site": "https://my.site.iban.com/",
+  "socialNetwork": {
+    "linkedin": "https://app.stage.paydo.com/",
+    "facebook": "",
+    "instagram": "https://app.stage.paydo.com/",
+    "other": ""
+  },
+  "counterParty": {
+    "europe": "20",
+    "usa": "20",
+    "asia": "20",
+    "latin": "20",
+    "oceania": "10",
+    "other": "10"
+  }
+}

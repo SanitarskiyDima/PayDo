@@ -1,0 +1,32 @@
+{
+  "publicKey": "project.public_key",
+  "order": {
+    "id": "C1GBPAPI",
+    "amount": "payAmount",
+    "currency": "payCurrency",
+    "items": [
+      {
+        "id": "487",
+        "name": "Item 1",
+        "price": "3"
+      },
+      {
+        "id": "358",
+        "name": "Item 2",
+        "price": "7"
+      }
+    ],
+    "description": "case1"
+  },
+  "signature": "hash.toString()",
+  "payer": {
+    "email": "eugeniy.o+4avtotest@payop.com",
+    "phone": "",
+    "name": ""
+  },
+  "paymentMethod": null,
+  "language": "en",
+  "resultUrl": "https://app.stage.paydo.com/",
+  "failPath": "https://app.stage.paydo.com/",
+  "productUrl": "https://app.stage.paydo.com/"
+}

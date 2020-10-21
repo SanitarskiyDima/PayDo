@@ -13,53 +13,38 @@ class PersVerPage {
     getBirthdayField() {
         cy.get('#mat-input-58').click()
         return cy.get('.mat-calendar-body-active > .mat-calendar-body-cell-content').click();
-        //return cy.get('#mat-input-3');
     }
 
     getPassportField() {
         return cy.get('#mat-input-59');
     }
 
-
     getCheckboxPassportWithoutExpirationDate() {
-        //return cy.get('[for="mat-checkbox-2-input"]');
         return cy.get('#mat-checkbox-9 > .mat-checkbox-layout > .mat-checkbox-inner-container');
     }
 
-
     getCheckBoxMyAddressIsDisplayedOnThePassport() {
-        //return cy.get('[for="mat-checkbox-3-input"]');
         return cy.get('#mat-checkbox-10 > .mat-checkbox-layout > .mat-checkbox-inner-container');
     }
 
-
     getChoiceCountry() {
-        //cy.get('[class="mat-select-placeholder ng-tns-c140-22 ng-star-inserted"]').click()
         cy.get('#mat-select-4').click();
-        //return cy.get('#mat-option-3').click();
         return cy.get('#mat-option-979 > .mat-option-text').click();
-
     }
 
     getCityField() {
-        //return cy.get('#mat-input-7');
         return cy.get('#mat-input-62')
-
     }
 
     getZIPField() {
-        //return cy.get('#mat-input-8');
         return cy.get('#mat-input-63');
     }
 
     getAddressField() {
-        //return cy.get('#mat-input-9')
         return cy.get('#mat-input-64');
     }
 
     getCheckBoxTermsAndConditions() {
-        //return cy.get('#mat-checkbox-1 > .mat-checkbox-layout > .mat-checkbox-inner-container');
-        //return cy.get('[for="mat-checkbox-1-input"]')
         return cy.get('[for="mat-checkbox-8-input"]');
 
     }
@@ -82,7 +67,6 @@ class PersVerPage {
                 "data": {
                     "info": {
                         "usIncorporated": false,
-                        //"name": "Вася Пупкин",
                         "name": "Jack Jonson",
                         "birthday": "1983-03-16T00:00:00.000Z",
                         "passport": {
@@ -230,11 +214,7 @@ class PersVerPage {
         return cy.get('[class="page-wrap"]');
     }
 
-    // isElementDisplayed2() {
-    //     cy.get('[class="mat-error fs-14"]').eq(0).invoke('text').should((text) =>{
-    //         expect(text).to.eq("Field must contain only latin letter symbols")
-    //     });
-    // }
+
 }
 
 export default new PersVerPage();

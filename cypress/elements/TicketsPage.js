@@ -26,7 +26,9 @@ class TicketsPage {
     }
 
     attachFile() {
-
+        cy.get('input[class="ngx-file-drop__file-input"]').each((fileInput) => {
+            cy.wrap(fileInput).attachFile("2.jpeg");
+        });
     }
 
     getButtonSendTicket() {
@@ -60,12 +62,15 @@ class TicketsPage {
         cy.get('.alert__title').invoke('text').should((text) => {
             expect(text).to.eq('Success');
         })
-
     }
 
     selectTopicMan() {
         cy.get('#mat-select-23 > .mat-select-trigger > .mat-select-arrow-wrapper').click();
         return cy.contains('span', ticket.department_2).click();
+    }
+
+    getButtonFilterTicket() {
+        return cy.contains('span', ' Filter ');
     }
 }
 

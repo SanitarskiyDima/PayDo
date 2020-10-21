@@ -29,7 +29,7 @@ class TransactionsPage {
             cy.wait(3000);
 
             //Check status tranzaction
-            cy.get('[class="mat-chip mat-focus-indicator mat-primary mat-standard-chip status_2"]').eq(0).invoke('text').should((text) => {
+            cy.get(':nth-child(1) > .cdk-column-state > .mat-chip').invoke('text').should((text) => {
                 expect(text).to.eq(' Accepted ')
             });
 
@@ -102,7 +102,7 @@ class TransactionsPage {
             cy.wait(3000);
 
             //Check status tranzaction
-            cy.get('[class="mat-chip mat-focus-indicator mat-primary mat-standard-chip status_2"]').eq(0).invoke('text').should((text) => {
+            cy.get(':nth-child(1) > .cdk-column-state > .mat-chip').invoke('text').should((text) => {
                 expect(text).to.eq(' Accepted ')
             });
 
@@ -184,7 +184,7 @@ class TransactionsPage {
             cy.wait(5000);
 
             //Check status tranzaction
-            cy.get('[class="mat-chip mat-focus-indicator mat-primary mat-standard-chip status_2"]').eq(0).invoke('text').should((text) => {
+            cy.get(':nth-child(1) > .cdk-column-state > .mat-chip').invoke('text').should((text) => {
                 expect(text).to.eq(' Accepted ')
             });
 
@@ -587,7 +587,6 @@ class TransactionsPage {
                     let exch = (payAmount / 100 * checkout.exchange_percentage).toFixed(2);
 
                     // комиссия за конвертацию цены товара с основной валюты в GBP
-                    //let exch2 = ((payAmount * 0.036512990427426) / 100 * +checkout.exchange_percentage).toFixed(2)
                     let exch2 = ((payAmount * rate) / 100 * checkout.exchange_percentage).toFixed(2);
 
                     if (strateg === 1) {
@@ -599,7 +598,6 @@ class TransactionsPage {
                         let net = (payAmount - sumcom - exch).toFixed(2);
 
                         // конвертируем результат в основную валюту мерчанта
-                        //let conv = (net * 0.036512990427426).toFixed(2)
                         let conv = (net * +rate).toFixed(2);
 
                         // комиссия за конвертацию результата в основную валюту
@@ -637,7 +635,6 @@ class TransactionsPage {
                             let net = (payAmount - fixcom - exch).toFixed(2);
 
                             // конвертируем результат в основную валюту мерчанта
-                            //let conv = (net * 0.036512990427426).toFixed(2)
                             let conv = (net * +rate).toFixed(2);
 
                             // комиссия за конвертацию результата в основную валюту
@@ -674,7 +671,6 @@ class TransactionsPage {
                             let net = (payAmount - (+payAmount / 100 * +perscom) - exch).toFixed(2);
 
                             // конвертируем результат в основную валюту мерчанта
-                            //let conv = (net * 0.036441447467412).toFixed(2)
                             let conv = (net * +rate).toFixed(2);
 
                             // комиссия за конвертацию результата в основную валюту
@@ -766,7 +762,6 @@ class TransactionsPage {
                         let exch = (payAmount / 100 * checkout.exchange_percentage).toFixed(2);
 
                         // комиссия за конвертацию с валюты оплаты в GBP
-                        //let exch2 = (((payAmount * 0.031927358873092).toFixed(2)) / 100 * +checkout.exchange_percentage).toFixed(2)
                         let exch2 = ((payAmount * rate) / 100 * checkout.exchange_percentage).toFixed(2);
 
 
@@ -779,7 +774,6 @@ class TransactionsPage {
                             let net = (payAmount - sumcom - exch).toFixed(2);
 
                             // конвертируем результат в валюту оплаты
-                            //let conv = (+net * 0.031927358873092).toFixed(2)
                             let conv = (+net * +rate).toFixed(2);
 
                             // комиссия за конвертацию результата в валюту оплаты
@@ -790,7 +784,6 @@ class TransactionsPage {
 
                             // конвертируем в основную валюту мерчанта
                             let conv2 = (+min * +rate2).toFixed(2);
-                            //let conv2 = (+min * 1.1819283160476).toFixed(2)
 
                             // комиссия за конвертацию в основную валюту мерчанта
                             let comconv2 = (conv2 / 100 * checkout.exchange_percentage).toFixed(2);
@@ -800,7 +793,6 @@ class TransactionsPage {
 
                             // конвертируем комиссия за конвертацию с валюты оплаты в GBP в основную валюту мерчанта
                             let conv3 = (exch2 * rate2).toFixed(2);
-                            //let conv3 = (exch2 * 1.1819283160476).toFixed(2)
 
                             // отнимаем конвертированную комиссию
                             let rezult = (min2 - conv3).toFixed(2);
@@ -845,8 +837,7 @@ class TransactionsPage {
                                 let min = (conv - comconv).toFixed(2);
 
                                 // конвертируем в основную валюту мерчанта
-                                //let conv2 = (+min * +rate2).toFixed(2)
-                                let conv2 = (+min * 1.1819283160476).toFixed(2);
+                                let conv2 = (+min * +rate2).toFixed(2);
 
                                 // комиссия за конвертацию в основную валюту мерчанта
                                 let comconv2 = (conv2 / 100 * checkout.exchange_percentage).toFixed(2);
@@ -855,8 +846,7 @@ class TransactionsPage {
                                 let min2 = (conv2 - (conv2 / 100 * checkout.exchange_percentage)).toFixed(2);
 
                                 // конвертируем комиссию за второй обмен в основную валюту мерчанта
-                                //let conv3 = (exch2 * rate2).toFixed(2)
-                                let conv3 = (exch2 * 1.1819283160476).toFixed(2);
+                                let conv3 = (exch2 * rate2).toFixed(2);
 
                                 let rezult = (min2 - conv3).toFixed(2);
 
@@ -889,7 +879,6 @@ class TransactionsPage {
                                 let net = (payAmount - (payAmount / 100 * perscom) - exch).toFixed(2);
 
                                 // конвертируем результат в валюту оплаты
-                                //let conv = (net * 0.031927358873092).toFixed(2)
                                 let conv = (net * +rate).toFixed(2);
 
                                 // комиссия за конвертацию результата в валюту оплаты
@@ -900,7 +889,6 @@ class TransactionsPage {
 
                                 // конвертируем в основную валюту мерчанта
                                 let conv2 = (+min * +rate2).toFixed(2);
-                                //let conv2 = (+min * 1.1819283160476).toFixed(2)
 
                                 // комиссия за конвертацию в основную валюту мерчанта
                                 let comconv2 = (conv2 / 100 * checkout.exchange_percentage).toFixed(2);
@@ -910,7 +898,6 @@ class TransactionsPage {
 
                                 // конвертируем комиссию конвертации с валюты оплаты в GBP
                                 let conv3 = (exch2 * rate2).toFixed(2);
-                                //let conv3 = (exch2 * 1.1819283160476).toFixed(2)
 
                                 // отнимаем комиссию за конвертацию
                                 let rezult = (min2 - conv3).toFixed(2);
@@ -966,7 +953,7 @@ class TransactionsPage {
             cy.wait(5000);
 
             //Check status tranzaction
-            cy.get('[class="mat-chip mat-focus-indicator mat-primary mat-standard-chip status_2"]').eq(0).invoke('text').should((text) => {
+            cy.get(':nth-child(1) > .cdk-column-state > .mat-chip').invoke('text').should((text) => {
                 expect(text).to.eq(' Accepted ')
             });
 
@@ -993,7 +980,6 @@ class TransactionsPage {
                     let exch = (payAmount / 100 * checkout.exchange_percentage).toFixed(2);
 
                     // комиссия за конвертацию с валюты оплаты в GBP
-                    //let exch2 = (((payAmount * 0.031927358873092).toFixed(2)) / 100 * +checkout.exchange_percentage).toFixed(2)
                     let exch2 = ((payAmount * rate) / 100 * checkout.exchange_percentage).toFixed(2);
 
                     if (strateg === 1) {
@@ -1005,7 +991,6 @@ class TransactionsPage {
                         let net = (payAmount - sumcom - exch).toFixed(2);
 
                         // конвертируем результат в валюту оплаты
-                        //let conv = (+net * 0.031927358873092).toFixed(2)
                         let conv = (+net * +rate).toFixed(2);
 
                         // комиссия за конвертацию результата в валюту оплаты
@@ -1016,7 +1001,6 @@ class TransactionsPage {
 
                         // конвертируем в основную валюту мерчанта
                         let conv2 = (+min * +rate2).toFixed(2);
-                        //let conv2 = (+min * 1.1819283160476).toFixed(2)
 
                         // комиссия за конвертацию в основную валюту мерчанта
                         let comconv2 = (conv2 / 100 * checkout.exchange_percentage).toFixed(2);
@@ -1026,7 +1010,6 @@ class TransactionsPage {
 
                         // конвертируем комиссию за конвертацию с валюты оплаты в GBP в основную валюту мерчанта
                         let conv3 = (exch2 * rate2).toFixed(2);
-                        //let conv3 = (exch2 * 1.1819283160476).toFixed(2)
 
                         // отнимаем конвертированную комиссию
                         let rezult = (min2 - conv3).toFixed(2);
@@ -1052,7 +1035,6 @@ class TransactionsPage {
                             let net = (payAmount - fixcom - exch).toFixed(2);
 
                             // конвертируем результат в основную валюту мерчанта
-                            //let conv = (net * 0.031927358873092).toFixed(2)
                             let conv = (net * +rate).toFixed(2);
 
                             // комиссия за конвертацию
@@ -1063,7 +1045,6 @@ class TransactionsPage {
 
                             // конвертируем в основную валюту мерчанта
                             let conv2 = (+min * +rate2).toFixed(2);
-                            //let conv2 = (+min * 1.1819283160476).toFixed(2)
 
                             // комиссия за конвертацию в основную валюту мерчанта
                             let comconv2 = (conv2 / 100 * checkout.exchange_percentage).toFixed(2);
@@ -1073,7 +1054,6 @@ class TransactionsPage {
 
                             // конвертируем комиссию за второй обмен в основную валюту мерчанта
                             let conv3 = (exch2 * rate2).toFixed(2);
-                            //let conv3 = (exch2 * 1.1819283160476).toFixed(2)
 
                             let rezult = (min2 - conv3).toFixed(2);
 
@@ -1097,7 +1077,6 @@ class TransactionsPage {
                             let net = (payAmount - (payAmount / 100 * perscom) - exch).toFixed(2);
 
                             // конвертируем результат в валюту оплаты
-                            //let conv = (net * 0.031927358873092).toFixed(2)
                             let conv = (net * +rate).toFixed(2);
 
                             // комиссия за конвертацию результата в валюту оплаты
@@ -1108,7 +1087,6 @@ class TransactionsPage {
 
                             // конвертируем в основную валюту мерчанта
                             let conv2 = (+min * +rate2).toFixed(2);
-                            //let conv2 = (+min * 1.1819283160476).toFixed(2)
 
                             // комиссия за конвертацию в основную валюту мерчанта
                             let comconv2 = (conv2 / 100 * checkout.exchange_percentage).toFixed(2);
@@ -1118,7 +1096,6 @@ class TransactionsPage {
 
                             // конвертируем комиссию конвертации с валюты оплаты в GBP
                             let conv3 = (exch2 * rate2).toFixed(2);
-                            //let conv3 = (exch2 * 1.1819283160476).toFixed(2)
 
                             // отнимаем комиссию за конвертацию
                             let rezult = (min2 - conv3).toFixed(2);
@@ -1165,7 +1142,7 @@ class TransactionsPage {
         // get ID last transaction and save on variable trIdent
         cy.request({
             method: 'GET',
-            url: 'https://account.stage.paydo.com/v1/transactions/user-transactions',
+            url: 'https://app.stage.paydo.com/v1/transactions/user-transactions',
             headers: {
                 token: merchant.token,
             }
@@ -1177,7 +1154,7 @@ class TransactionsPage {
             // get status refund
             cy.request({
                 method: 'GET',
-                url: "https://account.stage.paydo.com/v1/transactions/" + trIdent,
+                url: "https://app.stage.paydo.com/v1/transactions/" + trIdent,
                 headers: {
                     token: merchant.token,
                 }
@@ -1211,7 +1188,32 @@ class TransactionsPage {
     }
 
     getButtonChargebackCreate() {
-        return cy.get('[class="mat-button-focus-overlay"]');
+        return cy.get('[class="mat-button-focus-overlay"]').eq(3);
+    }
+
+    confirmChargeback() {
+        cy.contains('button', 'Yes, I sure ').click();
+    }
+
+    checkCreateChargeback() {
+        cy.get('[class="alert__title ng-tns-c71-0"]').invoke('text').should((text) => {
+            expect(text).to.eq('Success');
+        })
+    }
+
+    closeAlert() {
+        cy.get('[class="close-alert ng-tns-c71-0"]').click();
+    }
+
+    isErrorAlertDisplayed(alert) {
+        cy.get('li.ng-tns-c71-0').invoke('text').should((text) => {
+            expect(text).to.eq(alert)
+            //expect(text).to.eq('Refund amount is bigger than transaction amount')
+        })
+    }
+
+    getInputPartialRefundAmountRepeat() {
+        return cy.get('#mat-input-7');
     }
 }
 

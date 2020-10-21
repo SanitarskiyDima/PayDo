@@ -1,0 +1,17 @@
+{
+
+  "invoiceIdentifier": "invId",
+  "paymentMethod": 1,
+  "payCurrency": "payCurrency",
+  "customer": {
+    "email": "eugeniy.o+4avtotest@payop.com",
+    "name": "",
+    "phone": "",
+    "address": "",
+    "companyName": "",
+    "site": "",
+    "extraFields": []
+  },
+  "cardToken": "token",
+  "checkStatusUrl": "https://app.stage.paydo.com/en/payment/wait-page/{{txid}}"
+}
