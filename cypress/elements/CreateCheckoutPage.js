@@ -140,6 +140,9 @@ class CreateCheckoutPage {
                 cy.request({
                     method: 'POST',
                     url: `https://app.stage.paydo.com/v1/invoices/create`,
+                    headers: {
+                        token: merchant.token
+                    },
                     body: {
                         "publicKey": public_key,
                         "order": {

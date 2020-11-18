@@ -1,6 +1,8 @@
 {
+  "precision": 0.03,
+  "precisionThreeCurrency": 2,
   "product_currency_c2": "USD",
-  "product_currency_c3": "UAH",
+  "product_currency_c3": "ALL",
   "product_currency_c4": "CUP",
   "pay_currency": "EUR",
   "exchange_percentage": 3.5

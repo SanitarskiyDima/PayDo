@@ -1,4 +1,6 @@
 {
+  "exchange_percentage": 3.5,
+  "currency_1": "USD",
   "payamount": 300,
   "amount_1": 160,
   "amount_2": 301,

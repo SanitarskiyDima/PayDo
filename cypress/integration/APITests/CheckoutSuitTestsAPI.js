@@ -17,14 +17,14 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
 
         describe('Checkout suit API', () => {
 
-            describe('Checkout API Tests', () => {
+            describe('Checkouts API Tests', () => {
 
                 // 1.Самый простой кейс. Цена товара совпадает с валютами которые в кабинете мерчанта (USD, EUR, GBP, RUB)
                 // и валютами провайдера. Цена товара в GBP
-                it('Checkout, product currency GBP', () => {
+                it.skip('Checkout, product currency GBP', () => {
 
                     let payAmount = cy.getRandomArbitrary(300, 500);
-                    //let payAmount = 368.75;
+                    //let payAmount = 470.22;
                     let payCurrency = 'GBP';
 
                     createCheckoutPage.getCheckoutGBPAPI(payAmount, payCurrency);
@@ -34,7 +34,7 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
 
                 // 2.Простой кейс. Цена товара - совпадает с валютами которые в кабинете мерчанта (USD, EUR, GBP, RUB)
                 // и валютами провайдера. Цена товара в USD или EUR или RUB
-                it('Checkout, product currency USD', () => {
+                it.skip('Checkout, product currency USD', () => {
 
                     let payAmount = cy.getRandomArbitrary(300, 500);
                     //let payAmount = 474.24;
@@ -45,23 +45,23 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
                 });
 
                 // 3.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
-                // основная валюта мерчанта совпадает с валютой оплаты. Цена товара в UAH
-                it('Checkout, product currency is not USD, GBP, EUR, RUB', () => {
+                // основная валюта мерчанта совпадает с валютой оплаты. Цена товара в ALL
+                it.skip('Checkout, product currency is not USD, GBP, EUR, RUB', () => {
 
                     let payAmount = cy.getRandomArbitrary(300, 500);
-                    //let payAmount = 423.21;
+                    //let payAmount = 426.62;
 
                     createCheckoutPage.getCheckout3API(payAmount);
 
-                    transactionsPage.checkAmountAPIUAH(payAmount);
+                    transactionsPage.checkAmountAPIALL(payAmount);
                 });
 
                 // 4.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
                 // основная валюта мерчанта не совпадает с валютой оплаты. Цена товара в CUP
-                it('Checkout, product currency is not USD, GBP, EUR, RUB, the main currency does not match the payment currency ', () => {
+                it.skip('Checkout, product currency is not USD, GBP, EUR, RUB, the main currency does not match the payment currency ', () => {
 
                     let payAmount = cy.getRandomArbitrary(1000, 1500);
-                   // let payAmount = 419.94;
+                    //let payAmount = 1336.76;
 
                     createCheckoutPage.getCheckout4API(payAmount);
 
@@ -71,16 +71,16 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
 
             describe('Change strategy', () => {
 
-                it('Change strategy', () => {
+                it.skip('Change strategy', () => {
                     feenPage.changeCommissionsAndStrategy()
                 })
             });
 
-            describe('Checkout API Tests after change strategy', () => {
+            describe('Checkouts API Tests after change strategy', () => {
 
                 // 1.Самый простой кейс. Цена товара совпадает с валютами которые в кабинете мерчанта (USD, EUR, GBP, RUB)
                 // и валютами провайдера. Цена товара в GBP
-                it('Checkout, product currency GBP', () => {
+                it.skip('Checkout, product currency GBP', () => {
 
                     let payAmount = cy.getRandomArbitrary(300, 500);
                     //let payAmount = 368.75;
@@ -93,7 +93,7 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
 
                 // 2.Простой кейс. Цена товара - совпадает с валютами которые в кабинете мерчанта (USD, EUR, GBP, RUB)
                 // и валютами провайдера. Цена товара в USD или EUR или RUB
-                it('Checkout, product currency USD', () => {
+                it.skip('Checkout, product currency USD', () => {
 
                     let payAmount = cy.getRandomArbitrary(300, 500);
                     //let payAmount = 474.24;
@@ -104,20 +104,20 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
                 });
 
                 // 3.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
-                // основная валюта мерчанта совпадает с валютой оплаты. Цена товара в UAH
-                it('Checkout, product currency is not USD, GBP, EUR, RUB', () => {
+                // основная валюта мерчанта совпадает с валютой оплаты. Цена товара в ALL
+                it.skip('Checkout, product currency is not USD, GBP, EUR, RUB', () => {
 
                     let payAmount = cy.getRandomArbitrary(300, 500);
                     //let payAmount = 423.21;
 
                     createCheckoutPage.getCheckout3API(payAmount);
 
-                    transactionsPage.checkAmountAPIUAH(payAmount);
+                    transactionsPage.checkAmountAPIALL(payAmount);
                 });
 
                 // 4.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
                 // основная валюта мерчанта не совпадает с валютой оплаты. Цена товара в CUP
-                it('Checkout, product currency is not USD, GBP, EUR, RUB, the main currency does not match the payment currency ', () => {
+                it.skip('Checkout, product currency is not USD, GBP, EUR, RUB, the main currency does not match the payment currency ', () => {
 
                     let payAmount = cy.getRandomArbitrary(1000, 1500);
                     // let payAmount = 419.94;

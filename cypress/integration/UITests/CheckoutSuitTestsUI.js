@@ -11,7 +11,7 @@ import checkout from "../../fixtures/checkout";
 cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
     return (Math.random() * (max - min) + min).toFixed(2);
 };
-23
+
 
     describe ('Checkout suit UI ', () => {
 
@@ -30,8 +30,8 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
             // и валютами провайдера. Цена товара в GBP
             it('Checkout, product currency GBP', () => {
 
-                //let payAmount = cy.getRandomArbitrary(300, 500);
-                let payAmount = 400;
+                let payAmount = cy.getRandomArbitrary(300, 500);
+                //let payAmount = 400;
                 let payCurrency = 'GBP';
 
                 loginPage.getButtonToAdminPanel().click();
@@ -41,7 +41,7 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
                 cy.wait(5000);
                 homePage.getSubMenuRest().click();
 
-                restPage.getInputOrderID().type('dsan123');
+                restPage.getInputOrderID().type('C1GBP');
                 restPage.getInputOrderAmount().type(payAmount);
                 restPage.getInputOrderCurrency().type(payCurrency);
                 restPage.getInputOrderDescription().type('case1');
@@ -108,11 +108,11 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
             });
 
             // 3.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
-            // основная валюта мерчанта совпадает с валютой оплаты, Стратегия комиссии - ALL. Цена товара в UAH
+            // основная валюта мерчанта совпадает с валютой оплаты, Стратегия комиссии - ALL. Цена товара в ALL
             it('Checkout, product currency is not USD, GBP, EUR, RUB', () => {
 
                 let payAmount = cy.getRandomArbitrary(300, 500);
-                //let payAmount = 366.31;
+               // let payAmount = 426.62;
 
                 loginPage.getButtonToAdminPanel().click();
                 cy.wait(5000);
@@ -144,7 +144,7 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
                 loginPage.getButtonToAdminPanel().click();
                 cy.wait(5000);
                 homePage.getMenuPaymentHistory().click();
-                transactionsPage.checkAmountUIUAH(payAmount);
+                transactionsPage.checkAmountUIALL(payAmount);
             });
 
             // 4.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
@@ -285,7 +285,7 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
                     });
 
                     // 3.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
-                    // основная валюта мерчанта совпадает с валютой оплаты, Стратегия комиссии - ALL. Цена товара в UAH
+                    // основная валюта мерчанта совпадает с валютой оплаты, Стратегия комиссии - ALL. Цена товара в ALL
                     it('Checkout, product currency is not USD, GBP, EUR, RUB', () => {
 
                         let payAmount = cy.getRandomArbitrary(300, 500);
@@ -321,7 +321,7 @@ cy.getRandomArbitrary = function getRandomArbitrary(min, max) {
                         loginPage.getButtonToAdminPanel().click();
                         cy.wait(5000);
                         homePage.getMenuPaymentHistory().click();
-                        transactionsPage.checkAmountUIUAH(payAmount);
+                        transactionsPage.checkAmountUIALL(payAmount);
                     });
 
                     // 4.Цена товара - не совпадает с валютами, которые в кабинете мерчанта (USD, EUR, GBP, RUB),
